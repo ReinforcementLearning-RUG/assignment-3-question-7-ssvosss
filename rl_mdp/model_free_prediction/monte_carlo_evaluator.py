@@ -64,7 +64,7 @@ class MCEvaluator(AbstractEvaluator):
         states[-1] = episode[-1][0]
 
         for step in range(len(episode) - 2, -1, -1):
-            returns[step] = (self.env.discount_factor * returns[step + 1] + episode[step][2]
+            returns[step] = self.env.discount_factor * returns[step + 1] + episode[step][2]
             states[step] = episode[step][0]
 
         for state in set(states):
